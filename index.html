@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Smooth scrolling for navbar */
+    html { scroll-behavior: smooth; }
+
+/* Shared arrow style */
+.arrow-left, .arrow-right {
+  width: 0;
+  height: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+/* Hover grow */
+.arrow-left:hover, .arrow-right:hover {
+  transform: scale(1.2);
+}
+
+/* Left arrow */
+.arrow-left {
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 30px solid #F87171;
+  border-radius: 4px;
+}
+
+/* Right arrow */
+.arrow-right {
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 30px solid #F87171;
+  border-radius: 4px;
+}
+  </style>
+</head>
+<body class="bg-[#FFE5D9] text-[#1F2937] font-sans">
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="fixed top-4 left-4 flex space-x-6 px-6 py-3 bg-[#F87171] rounded-xl z-50 shadow-lg">
+    <a href="#home" class="text-lg font-bold text-black hover:text-white transition">Home</a>
+    <a href="#projects" class="text-lg font-bold text-black hover:text-white transition">Projects</a>
+    <a href="#about" class="text-lg font-bold text-black hover:text-white transition">About</a>
+    <a href="#contact" class="text-lg font-bold text-black hover:text-white transition">Contact</a>
+  </nav>
+
+  <!-- ===================== HERO SECTION ===================== -->
+  <section id="home" class="h-screen grid grid-cols-1 md:grid-cols-2 items-center px-16 relative">
+    
+    <!-- Decorative background circles -->
+    <div class="absolute w-96 h-96 bg-[#FBBF24] rounded-full opacity-30 top-40 left-10 -z-10"></div>
+    <div class="absolute w-72 h-72 bg-[#34D399] rounded-full opacity-30 bottom-10 right-10 -z-10"></div>
+
+    <!-- Left column: profile + text -->
+    <div class="flex flex-col items-start">
+      <img src="assets/images/profile-placeholder.png" alt="Profile Picture"
+           class="w-40 h-40 rounded-full mb-6 shadow-lg">
+      <h1 class="text-5xl font-bold mb-4">Your Name</h1>
+      <p class="text-xl max-w-md">
+        Game Designer & Graphics Artist passionate about creating engaging worlds and visual experiences.
+      </p>
+    </div>
+
+    <!-- Right column: project previews -->
+    <div class="flex flex-col space-y-8 items-center">
+      <div class="w-80 h-56 rounded-3xl overflow-hidden shadow-lg">
+        <img src="assets/images/project1-placeholder.jpg" class="object-cover w-full h-full" alt="Main project preview 1">
+      </div>
+      <div class="w-80 h-56 rounded-3xl overflow-hidden shadow-lg">
+        <img src="assets/images/project2-placeholder.jpg" class="object-cover w-full h-full" alt="Main project preview 2">
+      </div>
+    </div>
+  </section>
+
+<!-- ==================== PROJECTS SECTION ==================== -->
+<section id="projects" class="py-20 text-center">
+  <h2 class="text-4xl font-bold mb-10">Projects</h2>
+
+  <!-- Carousel wrapper (relative = arrows position correctly) -->
+  <div class="relative max-w-4xl mx-auto">
+
+    <!-- Viewport (clips extra cards so only 2 are visible) -->
+    <div class="overflow-hidden">
+      <!-- Flex row that slides left/right -->
+      <div id="carousel" class="flex transition-transform duration-500">
+        
+        <!-- PROJECT 1 -->
+        <a href="project1.html" class="w-1/2 px-4 flex-shrink-0">
+          <div class="bg-[#F87171] rounded-2xl overflow-hidden shadow-lg transform hover:scale-105 transition">
+            <img src="assets/images/project1-placeholder.jpg" alt="Project 1" class="w-full h-56 object-cover">
+            <div class="p-6 text-left">
+              <h3 class="text-2xl font-bold mb-2">Project 1</h3>
+              <p class="text-sm">Short description of your project and your role.</p>
+            </div>
+          </div>
+        </a>
+
+        <!-- PROJECT 2 -->
+        <a href="project2.html" class="w-1/2 px-4 flex-shrink-0">
+          <div class="bg-[#FBBF24] rounded-2xl overflow-hidden shadow-lg transform hover:scale-105 transition">
+            <img src="assets/images/project2-placeholder.jpg" alt="Project 2" class="w-full h-56 object-cover">
+            <div class="p-6 text-left">
+              <h3 class="text-2xl font-bold mb-2">Project 2</h3>
+              <p class="text-sm">Short description of your project and your role.</p>
+            </div>
+          </div>
+        </a>
+
+        <!-- PROJECT 3 -->
+        <a href="project3.html" class="w-1/2 px-4 flex-shrink-0">
+          <div class="bg-[#34D399] rounded-2xl overflow-hidden shadow-lg transform hover:scale-105 transition">
+            <img src="assets/images/project3-placeholder.jpg" alt="Project 3" class="w-full h-56 object-cover">
+            <div class="p-6 text-left">
+              <h3 class="text-2xl font-bold mb-2">Project 3</h3>
+              <p class="text-sm">Short description of your project and your role.</p>
+            </div>
+          </div>
+        </a>
+
+        <!-- PROJECT 4 -->
+        <a href="project4.html" class="w-1/2 px-4 flex-shrink-0">
+          <div class="bg-[#60A5FA] rounded-2xl overflow-hidden shadow-lg transform hover:scale-105 transition">
+            <img src="assets/images/project4-placeholder.jpg" alt="Project 4" class="w-full h-56 object-cover">
+            <div class="p-6 text-left">
+              <h3 class="text-2xl font-bold mb-2">Project 4</h3>
+              <p class="text-sm">Short description of your project and your role.</p>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- LEFT ARROW -->
+    <button id="prev" 
+      class="absolute top-1/2 -left-10 transform -translate-y-1/2 z-50">
+      <div class="arrow-left"></div>
+    </button>
+
+    <!-- RIGHT ARROW -->
+    <button id="next" 
+      class="absolute top-1/2 -right-10 transform -translate-y-1/2 z-50">
+      <div class="arrow-right"></div>
+    </button>
+  </div>
+</section>
+
+  <!-- ===================== ABOUT SECTION ===================== -->
+  <section id="about" class="py-20 max-w-3xl mx-auto text-center">
+    <h2 class="text-4xl font-bold mb-6">About Me</h2>
+    <p class="text-lg mb-4">
+      Hi, I’m [Your Name]. I enjoy working on game design, concept art, and visual design.
+      This portfolio showcases my projects created during school and independent work.
+    </p>
+    <p class="text-lg">Skills: Unity, Photoshop, Blender, Illustrator, Team Collaboration</p>
+  </section>
+
+  <!-- ===================== CONTACT SECTION ===================== -->
+  <section id="contact" class="py-20 bg-[#F87171] text-white text-center">
+    <h2 class="text-4xl font-bold mb-6">Get in Touch</h2>
+    <p class="mb-4">Email: <a href="mailto:your@email.com" class="underline">your@email.com</a></p>
+    <p class="mb-4">LinkedIn: <a href="#" class="underline">linkedin.com/in/yourprofile</a></p>
+    <p>itch.io: <a href="#" class="underline">yourname.itch.io</a></p>
+  </section>
+
+  <!-- Link to external JavaScript -->
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

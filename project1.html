@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project 1 - My Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* Rotating wheel previews */
+    .side-preview {
+      opacity: 0.4;
+      transition: all 0.3s ease;
+    }
+    .side-preview:hover {
+      opacity: 1;
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+  </style>
+</head>
+<body class="bg-[#FFE5D9] text-[#1F2937] font-sans">
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="fixed top-4 left-4 flex space-x-6 px-6 py-3 bg-[#F87171] rounded-xl z-50 shadow-lg">
+    <a href="index.html#home" class="text-lg font-bold text-black hover:text-white transition">Home</a>
+    <a href="index.html#projects" class="text-lg font-bold text-black hover:text-white transition">Projects</a>
+    <a href="index.html#about" class="text-lg font-bold text-black hover:text-white transition">About</a>
+    <a href="index.html#contact" class="text-lg font-bold text-black hover:text-white transition">Contact</a>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="h-96 flex flex-col justify-center items-center text-center">
+    <h1 class="text-5xl font-bold mb-4">Project 1 Title</h1>
+    <p class="text-xl max-w-2xl">
+      Short tagline or description for this project.
+    </p>
+  </section>
+
+  <!-- ===================== VIDEO ===================== -->
+    <section class="max-w-4xl mx-auto my-10 px-4">
+    <!-- Video placeholder -->
+    <div id="video-container" class="relative w-full rounded-2xl shadow-lg overflow-hidden cursor-pointer">
+        <!-- Preview image -->
+        <img src="assets/images/project1-poster.jpg" alt="Project 1 Trailer Preview" class="w-full h-auto">
+        <!-- Play button overlay -->
+        <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
+        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+        </svg>
+        </div>
+    </div>
+    </section>
+
+
+  <!-- ===================== DESCRIPTION ===================== -->
+  <section class="max-w-4xl mx-auto my-10 px-4 text-lg leading-relaxed">
+    <h2 class="text-3xl font-bold mb-4">About the Project</h2>
+    <p class="mb-4">
+      This is where you describe the project in detail. Talk about what the game is, 
+      the main goals, the gameplay, and what made it unique.
+    </p>
+    <h3 class="text-2xl font-bold mb-2">My Contribution</h3>
+    <p>
+      Here you explain what *you* did — level design, mechanics, UI, art, sound, etc.
+    </p>
+  </section>
+
+  <!-- ===================== GALLERY ===================== -->
+  <section class="max-w-5xl mx-auto my-10 px-4">
+    <h2 class="text-3xl font-bold mb-6 text-center">Gallery</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <img src="assets/images/project1-shot1.png" alt="Screenshot 1" class="rounded-xl shadow-md cursor-pointer gallery-img">
+      <img src="assets/images/project1-shot2.jpg" alt="Screenshot 2" class="rounded-xl shadow-md cursor-pointer gallery-img">
+      <img src="assets/images/project1-shot3.jpg" alt="Screenshot 3" class="rounded-xl shadow-md cursor-pointer gallery-img">
+      <img src="assets/images/project1-shot4.png" alt="Screenshot 4" class="rounded-xl shadow-md cursor-pointer gallery-img">
+    </div>
+  </section>
+
+  <!-- ===================== ROTATING WHEEL PREVIEWS ===================== -->
+  <div class="fixed top-1/2 left-4 transform -translate-y-1/2 z-40">
+    <a href="project4.html">
+      <img src="assets/images/project4-placeholder.jpg" alt="Project 4" class="w-24 rounded-xl side-preview">
+    </a>
+  </div>
+  <div class="fixed top-1/2 right-4 transform -translate-y-1/2 z-40">
+    <a href="project2.html">
+      <img src="assets/images/project2-placeholder.jpg" alt="Project 2" class="w-24 rounded-xl side-preview">
+    </a>
+  </div>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact" class="py-20 bg-[#F87171] text-white text-center mt-20">
+    <h2 class="text-4xl font-bold mb-6">Get in Touch</h2>
+    <p class="mb-4">Email: <a href="mailto:your@email.com" class="underline">your@email.com</a></p>
+    <p class="mb-4">LinkedIn: <a href="#" class="underline">linkedin.com/in/yourprofile</a></p>
+    <p>itch.io: <a href="#" class="underline">yourname.itch.io</a></p>
+  </section>
+
+  <!-- ===================== LIGHTBOX ===================== -->
+  <div id="lightbox" class="lightbox">
+    <span id="close" class="absolute top-6 right-10 text-white text-4xl cursor-pointer">&times;</span>
+    <img id="lightbox-img" src="" alt="Expanded image">
+  </div>
+
+  <!-- ===================== JS ===================== -->
+  <script>
+    // Gallery lightbox
+    const images = document.querySelectorAll('.gallery-img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('close');
+
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.classList.add('active');
+        lightboxImg.src = img.src;
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target !== lightboxImg) {
+        lightbox.classList.remove('active');
+      }
+    });
+
+  const videoContainer = document.getElementById("video-container");
+
+  videoContainer.addEventListener("click", () => {
+    // If video is not already loaded, insert it
+    if (!videoContainer.querySelector("video")) {
+      videoContainer.innerHTML = `
+        <video id="project-video" controls autoplay class="w-full rounded-2xl shadow-lg">
+          <source src="assets/videos/project1-trailer.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      `;
+
+      // Attach play/pause toggle to the video itself
+      const video = document.getElementById("project-video");
+      video.addEventListener("click", (e) => {
+        e.preventDefault(); // stop default "click to restart" behavior
+        if (video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+    }
+  });
+  </script>
+
+</body>
+</html>
