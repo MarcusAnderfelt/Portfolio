@@ -40,19 +40,35 @@
 </head>
 <body class="bg-[#FFE5D9] text-[#1F2937] font-sans">
 
-  <!-- ===================== NAVIGATION ===================== -->
-  <nav class="fixed top-4 left-4 flex space-x-6 px-6 py-3 bg-[#F87171] rounded-xl z-50 shadow-lg">
-    <a href="index.html#home" class="text-lg font-bold text-black hover:text-white transition">Home</a>
-    <a href="index.html#projects" class="text-lg font-bold text-black hover:text-white transition">Projects</a>
-    <a href="index.html#about" class="text-lg font-bold text-black hover:text-white transition">About</a>
-    <a href="index.html#contact" class="text-lg font-bold text-black hover:text-white transition">Contact</a>
-  </nav>
+<!-- ==================== NAVIGATION ==================== -->
+<nav class="fixed top-0 left-0 w-full flex justify-between items-center px-6 py-3 bg-[#F87171] text-black font-bold shadow-lg z-50">
+    <!-- Left side: Name -->
+    <span class="text-lg">Marcus Anderfelt - Game Designer</span>
+
+    <!-- Right side: Buttons -->
+    <div class="space-x-6">
+        <a href="index.html#home" class="text-lg hover:text-white transition">Home</a>
+        <a href="index.html#projects" class="text-lg hover:text-white transition">Projects</a>
+        <a href="index.html#about" class="text-lg hover:text-white transition">About</a>
+        <a href="#contact" class="text-lg hover:text-white transition">Contact</a>
+    </div>
+</nav>
 
   <!-- ===================== HERO ===================== -->
-  <section class="h-96 flex flex-col justify-center items-center text-center">
-    <h1 class="text-5xl font-bold mb-4">Project 1 Title</h1>
-    <p class="text-xl max-w-2xl">
-      Short tagline or description for this project.
+  <section 
+    class="text-center bg-cover bg-no-repeat bg-center flex flex-col justify-center"
+    style="
+      background-image: url('assets/images/OverstayBackground.jpg'); 
+      background-size: cover;       /* zoom in/out the image */
+      background-position: center;  /* focus on middle */
+      height: 80vh;                 /* 👈 change this to control height */
+    ">
+
+    <h1 class="text-5xl font-bold mb-4 text-white drop-shadow-lg">
+      
+    </h1>
+    <p class="text-xl text-gray-100 drop-shadow-md">
+      
     </p>
   </section>
 
@@ -97,37 +113,47 @@
     </div>
   </section>
 
-<!-- ====================== SIDE PREVIEW WHEELS ====================== -->
 
-<!-- LEFT SIDEBAR -->
-<div class="fixed top-0 left-0 h-full 
-            group transition-all duration-500 
-            w-12 hover:w-80 
-            bg-gradient-to-r from-black/40 via-black/20 to-transparent 
-            overflow-hidden">
+<!-- ================= SIDE PREVIEW ================= -->
 
-  <!-- Background image (inside sidebar) -->
-  <div class="h-full w-full bg-cover bg-center
-              transition-all duration-500 opacity-70 group-hover:opacity-100"
-       style="background-image: url('assets/images/Banner_Scene_Characters.png');
-              background-position: 60% 50%;">
-  </div>
+<!-- LEFT (Previous Project) -->
+<div class="group fixed top-0 left-0 h-full flex items-center">
+  <!-- Button (centered vertically) -->
+  <a href="project4.html"
+     class="z-10 w-28 h-16 flex items-center justify-center
+            bg-[#F87171] backdrop-blur-md text-black rounded-r-lg shadow-md
+            font-semibold text-sm transition-all duration-300
+            group-hover:opacity-0">
+      ← Previous
+  </a>
+
+  <!-- Slide-out Image -->
+  <a href="project4.html"
+     class="absolute top-0 left-0 h-full w-0 bg-cover bg-center opacity-0
+            transition-all duration-500
+            group-hover:w-64 group-hover:opacity-100"
+     style="background-image: url('assets/images/project3-placeholder.jpg');">
+  </a>
 </div>
 
+<!-- RIGHT (Next Project) -->
+<div class="group fixed top-0 right-0 h-full flex items-center">
+  <!-- Button (centered vertically) -->
+  <a href="project2.html"
+     class="z-10 w-28 h-16 flex items-center justify-center
+            bg-[#F87171] backdrop-blur-md text-black rounded-l-lg shadow-md
+            font-semibold text-sm transition-all duration-300
+            group-hover:opacity-0">
+      Next →
+  </a>
 
-<!-- RIGHT SIDEBAR -->
-<div class="fixed top-0 right-0 h-full 
-            group transition-all duration-500 
-            w-12 hover:w-80
-            bg-gradient-to-l from-black/40 via-black/20 to-transparent 
-            overflow-hidden">
-
-  <!-- Background image (inside sidebar) -->
-  <div class="h-full w-full bg-cover bg-center
-              transition-all duration-500 opacity-70 group-hover:opacity-100"
-       style="background-image: url('assets/images/SidePreviewTest.jpg');
-              background-position: 30% 50%;">
-  </div>
+  <!-- Slide-out Image -->
+  <a href="project2.html"
+     class="absolute top-0 right-0 h-full w-0 bg-cover bg-center opacity-0
+            transition-all duration-500
+            group-hover:w-64 group-hover:opacity-100"
+     style="background-image: url('assets/images/Banner_Scene_CharactersBackground.jpg');">
+  </a>
 </div>
 
 

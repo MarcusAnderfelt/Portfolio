@@ -42,8 +42,15 @@
 </head>
 <body class="bg-[#FFE5D9] text-[#1F2937] font-sans">
 
+  <!-- ===================== Name ===================== -->
+  <nav class="fixed top left flex space-x-6 px-6 py-3 bg-[#f87171] rounded-xl z-50 shadow-lg">
+    <!--Name-->
+    <span class="text-lg font-bold text-black">Marcus Anderfelt - Game Designer</span>
+  </nav>
+
+
   <!-- ===================== NAVIGATION ===================== -->
-  <nav class="fixed top-4 left-4 flex space-x-6 px-6 py-3 bg-[#F87171] rounded-xl z-50 shadow-lg">
+  <nav class="fixed top- right-0 flex space-x-6 px-6 py-3 bg-[#F87171] rounded-xl z-50 shadow-lg">
     <a href="#home" class="text-lg font-bold text-black hover:text-white transition">Home</a>
     <a href="#projects" class="text-lg font-bold text-black hover:text-white transition">Projects</a>
     <a href="#about" class="text-lg font-bold text-black hover:text-white transition">About</a>
@@ -53,14 +60,15 @@
   <!-- ===================== HERO SECTION ===================== -->
   <section id="home" class="h-screen grid grid-cols-1 md:grid-cols-2 items-center px-16 relative">
     
-    <!-- Decorative background circles -->
+    <!-- Decorative background circles 
     <div class="absolute w-96 h-96 bg-[#FBBF24] rounded-full opacity-30 top-40 left-10 -z-10"></div>
     <div class="absolute w-72 h-72 bg-[#34D399] rounded-full opacity-30 bottom-10 right-10 -z-10"></div>
-
+    -->
+    
     <!-- Left column: profile + text -->
     <div class="flex flex-col items-start">
       <img src="assets/images/profile-placeholder.png" alt="Profile Picture"
-           class="w-40 h-40 rounded-full mb-6 shadow-lg">
+           class="w-64 h-64 rounded-full mb-6 shadow-lg">
       <h1 class="text-5xl font-bold mb-4">Your Name</h1>
       <p class="text-xl max-w-md">
         Game Designer & Graphics Artist passionate about creating engaging worlds and visual experiences.
@@ -69,11 +77,11 @@
 
     <!-- Right column: project previews -->
     <div class="flex flex-col space-y-8 items-center">
-      <div class="w-80 h-56 rounded-3xl overflow-hidden shadow-lg">
-        <img src="assets/images/project1-placeholder.jpg" class="object-cover w-full h-full" alt="Main project preview 1">
+      <div class="w-[950px] h-[400px] rounded-3xl overflow-hidden shadow-lg">
+        <img src="assets/images/OverstayBackground.jpg" class="object-cover w-full h-full" alt="Main project preview 1">
       </div>
-      <div class="w-80 h-56 rounded-3xl overflow-hidden shadow-lg">
-        <img src="assets/images/project2-placeholder.jpg" class="object-cover w-full h-full" alt="Main project preview 2">
+      <div class="w-[950px] h-[400px] rounded-3xl overflow-hidden shadow-lg">
+        <img src="assets/images/ImagminationBackground.png" class="object-cover w-full h-full" alt="Main project preview 2">
       </div>
     </div>
   </section>
@@ -93,7 +101,7 @@
         <!-- PROJECT 1 -->
         <a href="project1.html" class="w-1/2 px-4 flex-shrink-0">
           <div class="bg-[#F87171] rounded-2xl overflow-hidden shadow-lg transform hover:scale-105 transition">
-            <img src="assets/images/project1-placeholder.jpg" alt="Project 1" class="w-full h-56 object-cover">
+            <img src="assets/images/project1-poster.jpg" alt="Project 1" class="w-full h-56 object-cover">
             <div class="p-6 text-left">
               <h3 class="text-2xl font-bold mb-2">Project 1</h3>
               <p class="text-sm">Short description of your project and your role.</p>
@@ -104,7 +112,7 @@
         <!-- PROJECT 2 -->
         <a href="project2.html" class="w-1/2 px-4 flex-shrink-0">
           <div class="bg-[#FBBF24] rounded-2xl overflow-hidden shadow-lg transform hover:scale-105 transition">
-            <img src="assets/images/project2-placeholder.jpg" alt="Project 2" class="w-full h-56 object-cover">
+            <img src="assets/images/Imagmination-poster.jpg" alt="Project 2" class="w-full h-56 object-cover">
             <div class="p-6 text-left">
               <h3 class="text-2xl font-bold mb-2">Project 2</h3>
               <p class="text-sm">Short description of your project and your role.</p>
