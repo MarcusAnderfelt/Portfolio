@@ -25,7 +25,7 @@
       position: fixed;
       z-index: 100;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.9); /* Dark background, adjust opacity here */
+      background: rgba(0, 0, 0, 0.9); /* Dark background, adjust opacity here */
       justify-content: center;
       align-items: center;
     }
@@ -169,10 +169,20 @@
   </section>
 
   <!-- ===================== LIGHTBOX (Gallery fullscreen) ===================== -->
-  <div id="lightbox" class="lightbox">
-    <span id="close" class="absolute top-6 right-10 text-white text-4xl cursor-pointer">&times;</span>
-    <img id="lightbox-img" src="" alt="Expanded image">
-  </div>
+<div id="lightbox" class="lightbox">
+  <span id="close" class="absolute top-6 right-10 text-white text-4xl cursor-pointer">&times;</span>
+
+  <!-- Lightbox image -->
+  <img id="lightbox-img" src="" alt="Expanded image">
+
+  <!-- Navigation buttons -->
+  <button id="prev" class="absolute left-6 top-1/2 -translate-y-1/2 text-white text-4xl font-bold cursor-pointer px-3 py-1 bg-black bg-opacity-40 rounded-full hover:bg-opacity-70">
+    &#10094; <!-- left arrow -->
+  </button>
+  <button id="next" class="absolute right-6 top-1/2 -translate-y-1/2 text-white text-4xl font-bold cursor-pointer px-3 py-1 bg-black bg-opacity-40 rounded-full hover:bg-opacity-70">
+    &#10095; <!-- right arrow -->
+  </button>
+</div>
 
   <!-- ===================== SCRIPT ===================== -->
   <script>
@@ -214,25 +224,53 @@ videoContainer.addEventListener("click", () => {
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const closeBtn = document.getElementById('close');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+
+    let currentIndex = 0; // track which image is open
 
     // Open lightbox on image click
-    images.forEach(img => {
+    images.forEach((img, index) => {
       img.addEventListener('click', () => {
-        lightbox.classList.add('active');
-        lightboxImg.src = img.src; // show clicked image
+        currentIndex = index;
+        openLightbox();
       });
     });
 
-    // Close lightbox on "X" click
-    closeBtn.addEventListener('click', () => {
-      lightbox.classList.remove('active');
-    });
+    function openLightbox() {
+      lightbox.classList.add('active');
+      lightboxImg.src = images[currentIndex].src;
+    }
 
-    // Close lightbox if you click outside the image
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+    }
+
+    // Navigate
+    function showNext() {
+      currentIndex = (currentIndex + 1) % images.length; // loop forward
+      openLightbox();
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length; // loop backward
+      openLightbox();
+    }
+
+    // Event listeners
+    closeBtn.addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', (e) => {
-      if (e.target !== lightboxImg) {
-        lightbox.classList.remove('active');
-      }
+      if (e.target === lightbox) closeLightbox(); // click outside image closes
+    });
+    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+
+    // Add keyboard support
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
+      if (e.key === 'Escape') closeLightbox();
     });
   </script>
 
