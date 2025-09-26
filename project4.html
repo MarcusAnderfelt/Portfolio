@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project 3 - My Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+  </style>
+</head>
+<body class="bg-[#FFE5D9] text-[#1F2937] font-sans">
+
+<!-- NAVIGATION -->
+<nav class="fixed top-0 left-0 w-full flex justify-between items-center px-6 py-3 bg-[#F87171] text-black font-bold shadow-lg z-50">
+  <span class="text-lg">Marcus Anderfelt - Game Designer</span>
+  <div class="space-x-6">
+    <a href="index.html#home" class="text-lg hover:text-white transition">Home</a>
+    <a href="index.html#projects" class="text-lg hover:text-white transition">Projects</a>
+    <a href="index.html#about" class="text-lg hover:text-white transition">About</a>
+    <a href="#contact" class="text-lg hover:text-white transition">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="text-center bg-cover bg-center flex flex-col justify-center"
+  style="background-image: url('assets/images/project4-placeholder.jpg'); height: 80vh;">
+  <h1 class="text-5xl font-bold mb-4 text-white drop-shadow-lg">Project 4 Title</h1>
+  <p class="text-xl text-gray-100 drop-shadow-md">Short description for Project 3.</p>
+</section>
+
+<!-- DESCRIPTION -->
+<section class="max-w-4xl mx-auto my-10 px-4 text-lg leading-relaxed">
+  <h2 class="text-3xl font-bold mb-4">About the Project</h2>
+  <p class="mb-4">Describe Project 3 here.</p>
+  <h3 class="text-2xl font-bold mb-2">My Contribution</h3>
+  <p>Explain your role here.</p>
+</section>
+
+<!-- GALLERY -->
+<section class="max-w-5xl mx-auto my-10 px-4">
+  <h2 class="text-3xl font-bold mb-6 text-center">Gallery</h2>
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+    <img src="assets/images/project3-shot1.jpg" alt="Screenshot 1" class="rounded-xl shadow-md cursor-pointer gallery-img">
+    <img src="assets/images/project3-shot2.jpg" alt="Screenshot 2" class="rounded-xl shadow-md cursor-pointer gallery-img">
+    <img src="assets/images/project3-shot3.jpg" alt="Screenshot 3" class="rounded-xl shadow-md cursor-pointer gallery-img">
+  </div>
+</section>
+
+<!-- SIDE PREVIEW -->
+<div class="group fixed top-0 left-0 h-full flex items-center">
+  <a href="project3.html" class="z-10 w-28 h-16 flex items-center justify-center bg-[#F87171] text-black rounded-r-lg shadow-md font-semibold text-sm transition-all duration-300 group-hover:opacity-0">← Previous</a>
+  <a href="project3.html" class="absolute top-0 left-0 h-full w-0 bg-cover bg-center opacity-0 transition-all duration-500 group-hover:w-64 group-hover:opacity-100" style="background-image: url('assets/images/project3-placeholder.jpg');"></a>
+</div>
+<div class="group fixed top-0 right-0 h-full flex items-center">
+  <a href="project1.html" class="z-10 w-28 h-16 flex items-center justify-center bg-[#F87171] text-black rounded-l-lg shadow-md font-semibold text-sm transition-all duration-300 group-hover:opacity-0">Next →</a>
+  <a href="project1.html" class="absolute top-0 right-0 h-full w-0 bg-cover bg-center opacity-0 transition-all duration-500 group-hover:w-64 group-hover:opacity-100" style="background-image: url('assets/images/Timmy.png');"></a>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" class="py-20 bg-[#F87171] text-white text-center mt-20">
+  <h2 class="text-4xl font-bold mb-6">Get in Touch</h2>
+  <p class="mb-4">Email: <a href="mailto:your@email.com" class="underline">your@email.com</a></p>
+  <p class="mb-4">LinkedIn: <a href="#" class="underline">linkedin.com/in/yourprofile</a></p>
+  <p>itch.io: <a href="#" class="underline">yourname.itch.io</a></p>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+  <span id="close" class="absolute top-6 right-10 text-white text-4xl cursor-pointer">&times;</span>
+  <img id="lightbox-img" src="" alt="Expanded image">
+  <button id="prev" class="absolute left-6 top-1/2 -translate-y-1/2 text-white text-4xl font-bold px-3 py-1 bg-black bg-opacity-40 rounded-full">&#10094;</button>
+  <button id="next" class="absolute right-6 top-1/2 -translate-y-1/2 text-white text-4xl font-bold px-3 py-1 bg-black bg-opacity-40 rounded-full">&#10095;</button>
+</div>
+
+<script>
+// Lightbox with arrows
+const images = document.querySelectorAll('.gallery-img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeBtn = document.getElementById('close');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+let currentIndex = 0;
+
+images.forEach((img, index) => {
+  img.addEventListener('click', () => { currentIndex = index; openLightbox(); });
+});
+
+function openLightbox() { lightbox.classList.add('active'); lightboxImg.src = images[currentIndex].src; }
+function closeLightbox() { lightbox.classList.remove('active'); }
+function showNext() { currentIndex = (currentIndex + 1) % images.length; openLightbox(); }
+function showPrev() { currentIndex = (currentIndex - 1 + images.length) % images.length; openLightbox(); }
+
+closeBtn.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+document.addEventListener('keydown', (e) => { if (!lightbox.classList.contains('active')) return;
+  if (e.key === 'ArrowRight') showNext();
+  if (e.key === 'ArrowLeft') showPrev();
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+
+</body>
+</html>
